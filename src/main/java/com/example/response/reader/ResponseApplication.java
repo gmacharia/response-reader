@@ -1,7 +1,6 @@
 package com.example.response.reader;
 
 import com.example.response.reader.dao.ResponsePayload;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -11,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class ResponseApplication {
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) {
         String jsonResponse = "{\"data\":{\"id\":\"\",\"status\":\"FAILED\"},\"status\":{\"isSuccess\":false,\"message\":\"Please enter a valid Account Number\",\"errorCode\":\"ERR373\"}}";
 
         try {
@@ -23,7 +22,7 @@ public class ResponseApplication {
             System.out.println("Is Success: " + response.status.getIsSuccess());
             System.out.println("Message: " + response.status.getMessage());
             System.out.println("Error Code: " + response.status.getErrorCode());
-        } catch (JsonParseException ex) {
+        } catch (JsonProcessingException ex) {
             System.out.println(ex.getMessage());
         }
     }
